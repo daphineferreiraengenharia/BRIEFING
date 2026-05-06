@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing – Daphine Ferreira Engenharia Civil</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive:    #6b7c5c;
+    --olive-dk: #4e5c42;
+    --olive-lt: #8a9b79;
+    --cream:    #f5f0e8;
+    --cream-dk: #ece5d6;
+    --cream-brd:#d8cfbe;
+    --text:     #2e2e2e;
+    --muted:    #7a7060;
+    --white:    #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 300;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .no-print { display: none !important; }
+    body { background: white; }
+    .page-wrap { max-width: 100%; padding: 0; }
+    .section-card { box-shadow: none; border: 1px solid var(--cream-brd); break-inside: avoid; }
+    header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .tab-btn, .tabs { display: none; }
+    .tab-content { display: block !important; }
+    .form-section { page-break-inside: avoid; }
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--olive);
+    padding: 32px 48px 28px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .logo-svg { flex-shrink: 0; }
+
+  .header-title {
+    color: var(--white);
+    border-left: 1px solid rgba(255,255,255,0.3);
+    padding-left: 28px;
+  }
+  .header-title h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .header-title p {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
+
+  /* ── ACTIONS BAR ── */
+  .actions-bar {
+    background: var(--olive-dk);
+    padding: 12px 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn {
+    cursor: pointer;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: all .2s;
+  }
+  .btn-primary {
+    background: var(--cream);
+    color: var(--olive-dk);
+  }
+  .btn-primary:hover { background: var(--white); }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: var(--white);
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+  .btn-clear {
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+  .btn-clear:hover { color: var(--white); }
+
+  /* ── TABS ── */
+  .tabs {
+    background: var(--cream-dk);
+    border-bottom: 2px solid var(--cream-brd);
+    padding: 0 48px;
+    display: flex;
+    gap: 0;
+  }
+  .tab-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 14px 22px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all .2s;
+  }
+  .tab-btn:hover { color: var(--olive); }
+  .tab-btn.active {
+    color: var(--olive-dk);
+    border-bottom-color: var(--olive);
+  }
+
+  /* ── CONTENT ── */
+  .page-wrap { max-width: 860px; margin: 0 auto; padding: 36px 48px 60px; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ── IDENTIFICATION (shown on all tabs) ── */
+  .id-band {
+    background: var(--white);
+    border: 1px solid var(--cream-brd);
+    border-radius: 4px;
+    padding: 22px 28px 20px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 28px;
+  }
+  .id-band .full { grid-column: 1/-1; }
+
+  /* ── SECTION CARD ── */
+  .section-card {
+    background: var(--white);
+    border: 1px solid var(--cream-brd);
+    border-radius: 4px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .section-header {
+    background: var(--olive);
+    padding: 10px 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-header span.icon { font-size: 14px; }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .section-body { padding: 20px 22px 22px; }
+
+  /* ── FORM FIELDS ── */
+  .field-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px 20px;
+    margin-bottom: 14px;
+  }
+  .field-row.single { grid-template-columns: 1fr; }
+  .field-row.two { grid-template-columns: 1fr 1fr; }
+  .field-row.three { grid-template-columns: 1fr 1fr 1fr; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .field input[type="text"],
+  .field input[type="date"],
+  .field input[type="number"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field textarea,
+  .field select {
+    border: 1px solid var(--cream-brd);
+    border-radius: 2px;
+    padding: 7px 10px;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color .2s;
+    width: 100%;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--olive-lt);
+    background: var(--white);
+  }
+  .field textarea { resize: vertical; min-height: 64px; }
+
+  /* ── RADIO / CHECK GROUPS ── */
+  .radio-group, .check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-top: 4px;
+  }
+  .radio-group label, .check-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: 0;
+    cursor: pointer;
+  }
+  .radio-group input, .check-group input {
+    accent-color: var(--olive);
+    width: 14px; height: 14px;
+    cursor: pointer;
+  }
+
+  /* ── INLINE RADIO (sim/não) ── */
+  .inline-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .inline-field .q {
+    font-size: 12.5px;
+    flex: 1 1 200px;
+  }
+  .inline-field .radio-group { flex-shrink: 0; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--cream-dk);
+    margin: 16px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--olive);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    padding: 16px;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <!-- Logo SVG recreated from the uploaded brand -->
+  <svg class="logo-svg" width="80" height="72" viewBox="0 0 80 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <text x="0" y="52" font-family="'Cormorant Garamond', Georgia, serif" font-size="60" font-weight="300" fill="white" letter-spacing="-2">DF</text>
+    <text x="1" y="64" font-family="'Jost', sans-serif" font-size="7" font-weight="400" fill="rgba(255,255,255,0.75)" letter-spacing="1.5">DAPHINE FERREIRA</text>
+    <text x="1" y="72" font-family="'Jost', sans-serif" font-size="6" font-weight="300" fill="rgba(255,255,255,0.55)" letter-spacing="2">ENGENHARIA CIVIL</text>
+  </svg>
+  <div class="header-title">
+    <h1>Briefing de Projeto</h1>
+    <p>Formulário de levantamento de informações</p>
+  </div>
+</header>
+
+<!-- ══ ACTIONS BAR ══ -->
+<div class="actions-bar no-print">
+  <button class="btn btn-primary" onclick="window.print()">⬇ Salvar / Imprimir PDF</button>
+  <button class="btn btn-outline" onclick="clearForm()">Limpar Formulário</button>
+  <button class="btn btn-clear" onclick="copyLink()">🔗 Copiar link desta página</button>
+</div>
+
+<!-- ══ TABS ══ -->
+<div class="tabs no-print">
+  <button class="tab-btn active" onclick="switchTab('residencial', this)">🏠 Residencial</button>
+  <button class="tab-btn" onclick="switchTab('mcmv', this)">🏘 MCMV</button>
+  <button class="tab-btn" onclick="switchTab('comercial', this)">🏢 Comercial</button>
+  <button class="tab-btn" onclick="switchTab('reforma', this)">🔨 Reforma</button>
+</div>
+
+<div class="page-wrap">
+
+<!-- ══════════════════════════════════
+     TAB 1 – RESIDENCIAL
+══════════════════════════════════ -->
+<div id="tab-residencial" class="tab-content active">
+
+  <!-- Identificação -->
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📋</span><h2>Identificação do Cliente</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Nome completo</label><input type="text" placeholder="Nome do cliente"></div>
+        <div class="field"><label>Data de preenchimento</label><input type="date"></div>
+      </div>
+      <div class="field-row three">
+        <div class="field"><label>Telefone / WhatsApp</label><input type="tel" placeholder="(00) 00000-0000"></div>
+        <div class="field"><label>E-mail</label><input type="email" placeholder="email@exemplo.com"></div>
+        <div class="field"><label>Endereço do terreno</label><input type="text" placeholder="Rua, número, bairro"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composição familiar -->
+  <div class="section-card">
+    <div class="section-header"><span class="icon">👨‍👩‍👧‍👦</span><h2>Composição Familiar</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Nº de moradores</label><input type="number" min="1" placeholder="Ex: 4"></div>
+        <div class="field"><label>Idades dos moradores</label><input type="text" placeholder="Ex: 38, 35, 10, 7"></div>
+      </div>
+      <div class="field-row three">
+        <div class="field">
+          <label>Possui crianças?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_criancas" value="sim"> Sim</label>
+            <label><input type="radio" name="res_criancas" value="nao" checked> Não</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Possui idosos?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_idosos" value="sim"> Sim</label>
+            <label><input type="radio" name="res_idosos" value="nao" checked> Não</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Possui pets?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_pets" value="sim"> Sim</label>
+            <label><input type="radio" name="res_pets" value="nao" checked> Não</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row single">
+        <div class="field"><label>Se sim, quais pets?</label><input type="text" placeholder="Ex: cachorro de grande porte"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Programa de necessidades -->
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🏠</span><h2>Programa de Necessidades</h2></div>
+    <div class="section-body">
+      <div class="field-row three">
+        <div class="field">
+          <label>Nº de quartos</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_quartos" value="2"> 2</label>
+            <label><input type="radio" name="res_quartos" value="3"> 3</label>
+            <label><input type="radio" name="res_quartos" value="4"> 4</label>
+            <label><input type="radio" name="res_quartos" value="outro"> Outro</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Nº de banheiros</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_ban" value="1"> 1</label>
+            <label><input type="radio" name="res_ban" value="2"> 2</label>
+            <label><input type="radio" name="res_ban" value="3"> 3</label>
+            <label><input type="radio" name="res_ban" value="outro"> Outro</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Deseja suíte?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_suite" value="sim"> Sim</label>
+            <label><input type="radio" name="res_suite" value="nao"> Não</label>
+          </div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="field">
+        <label>Ambientes desejados (marque todos que se aplicam)</label>
+        <div class="check-group">
+          <label><input type="checkbox"> Sala integrada com cozinha</label>
+          <label><input type="checkbox"> Área de serviço coberta</label>
+          <label><input type="checkbox"> Área gourmet / churrasqueira</label>
+          <label><input type="checkbox"> Garagem</label>
+          <label><input type="checkbox"> Escritório / home office</label>
+          <label><input type="checkbox"> Despensa</label>
+          <label><input type="checkbox"> Jardim</label>
+          <label><input type="checkbox"> Quintal</label>
+          <label><input type="checkbox"> Espaço para ampliação futura</label>
+        </div>
+      </div>
+      <div class="field-row two" style="margin-top:14px">
+        <div class="field"><label>Vagas de garagem</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_vagas" value="0"> Nenhuma</label>
+            <label><input type="radio" name="res_vagas" value="1"> 1</label>
+            <label><input type="radio" name="res_vagas" value="2"> 2</label>
+            <label><input type="radio" name="res_vagas" value="3"> 3+</label>
+          </div>
+        </div>
+        <div class="field"><label>Outros ambientes desejados</label><input type="text" placeholder="Descreva"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preferências funcionais -->
+  <div class="section-card">
+    <div class="section-header"><span class="icon">⚙️</span><h2>Preferências Funcionais</h2></div>
+    <div class="section-body">
+      <div class="field-row three">
+        <div class="field">
+          <label>Cozinha</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_coz" value="aberta"> Aberta</label>
+            <label><input type="radio" name="res_coz" value="fechada"> Fechada</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Lavanderia</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_lav" value="interna"> Interna</label>
+            <label><input type="radio" name="res_lav" value="externa"> Externa</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Ventilação do banheiro</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_vent" value="natural"> Natural</label>
+            <label><input type="radio" name="res_vent" value="forcada"> Forçada</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row two" style="margin-top:8px">
+        <div class="field">
+          <label>Quarto principal voltado para</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_quarto_pos" value="frente"> Frente</label>
+            <label><input type="radio" name="res_quarto_pos" value="fundo"> Fundo</label>
+            <label><input type="radio" name="res_quarto_pos" value="ind"> Indiferente</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Costuma receber visitas com frequência?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_visitas" value="sim"> Sim</label>
+            <label><input type="radio" name="res_visitas" value="nao"> Não</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row two" style="margin-top:8px">
+        <div class="field">
+          <label>Trabalha em casa?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_wfh" value="sim"> Sim</label>
+            <label><input type="radio" name="res_wfh" value="nao"> Não</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terreno -->
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📍</span><h2>Terreno e Implantação</h2></div>
+    <div class="section-body">
+      <div class="field-row three">
+        <div class="field"><label>Frente (m)</label><input type="number" placeholder="Ex: 10"></div>
+        <div class="field"><label>Fundo (m)</label><input type="number" placeholder="Ex: 25"></div>
+        <div class="field"><label>Lateral (m)</label><input type="number" placeholder="Ex: 25"></div>
+      </div>
+      <div class="field-row three">
+        <div class="field">
+          <label>Topografia</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_topo" value="plano"> Plano</label>
+            <label><input type="radio" name="res_topo" value="aclive"> Aclive</label>
+            <label><input type="radio" name="res_topo" value="declive"> Declive</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Possui levantamento topográfico?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_levant" value="sim"> Sim</label>
+            <label><input type="radio" name="res_levant" value="nao"> Não</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Sabe a posição do sol no terreno?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_sol" value="sim"> Sim</label>
+            <label><input type="radio" name="res_sol" value="nao"> Não</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row single">
+        <div class="field"><label>Restrições do lote (recuos, condomínio, prefeitura, etc.)</label><textarea placeholder="Descreva as restrições conhecidas"></textarea></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expectativas -->
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🎯</span><h2>Expectativas do Projeto</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Área aproximada desejada (m²)</label><input type="number" placeholder="Ex: 120"></div>
+        <div class="field"><label>Prazo desejado para início</label>
+          <select>
+            <option value="">Selecione...</option>
+            <option>Imediato</option>
+            <option>Até 3 meses</option>
+            <option>Mais de 3 meses</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row two">
+        <div class="field"><label>Limite de orçamento para obra?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_orcam" value="sim"> Sim</label>
+            <label><input type="radio" name="res_orcam" value="nao"> Não</label>
+          </div>
+        </div>
+        <div class="field"><label>Valor aproximado do orçamento (R$)</label><input type="text" placeholder="Ex: R$ 250.000"></div>
+      </div>
+      <div class="field-row single">
+        <div class="field">
+          <label>O que é mais importante para você?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_prio" value="economia"> Economia na obra</label>
+            <label><input type="radio" name="res_prio" value="conforto"> Conforto</label>
+            <label><input type="radio" name="res_prio" value="estetica"> Estética</label>
+            <label><input type="radio" name="res_prio" value="rapidez"> Rapidez na execução</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row two">
+        <div class="field"><label>Ambiente prioritário no projeto</label><input type="text" placeholder="Ex: cozinha, suíte..."></div>
+        <div class="field"><label>Possui referências / imagens de inspiração?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="res_ref" value="sim"> Sim (enviar por WhatsApp)</label>
+            <label><input type="radio" name="res_ref" value="nao"> Não</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row single">
+        <div class="field"><label>Observações gerais / necessidades específicas</label><textarea placeholder="Qualquer informação adicional relevante para o projeto"></textarea></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-residencial -->
+
+
+<!-- ══════════════════════════════════
+     TAB 2 – MCMV
+══════════════════════════════════ -->
+<div id="tab-mcmv" class="tab-content">
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📋</span><h2>Identificação do Cliente</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Nome completo</label><input type="text"></div>
+        <div class="field"><label>Data de preenchimento</label><input type="date"></div>
+      </div>
+      <div class="field-row three">
+        <div class="field"><label>CPF</label><input type="text" placeholder="000.000.000-00"></div>
+        <div class="field"><label>Telefone / WhatsApp</label><input type="tel" placeholder="(00) 00000-0000"></div>
+        <div class="field"><label>E-mail</label><input type="email"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🏘</span><h2>Faixa MCMV</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field">
+          <label>Faixa do programa</label>
+          <div class="radio-group">
+            <label><input type="radio" name="mcmv_faixa" value="1"> Faixa 1 (até R$ 2.640)</label>
+            <label><input type="radio" name="mcmv_faixa" value="2"> Faixa 2 (até R$ 4.400)</label>
+            <label><input type="radio" name="mcmv_faixa" value="3"> Faixa 3 (até R$ 8.000)</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Financiamento em andamento?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="mcmv_fin" value="sim"> Sim</label>
+            <label><input type="radio" name="mcmv_fin" value="nao"> Não</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row single">
+        <div class="field"><label>Banco / agente financeiro</label><input type="text" placeholder="Ex: Caixa Econômica Federal"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">👨‍👩‍👧‍👦</span><h2>Composição Familiar</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Nº de moradores</label><input type="number" min="1"></div>
+        <div class="field"><label>Idades dos moradores</label><input type="text" placeholder="Ex: 30, 28, 5, 2"></div>
+      </div>
+      <div class="field-row three">
+        <div class="field"><label>Possui crianças?</label><div class="radio-group"><label><input type="radio" name="mcmv_cri" value="sim"> Sim</label><label><input type="radio" name="mcmv_cri" value="nao" checked> Não</label></div></div>
+        <div class="field"><label>Possui idosos?</label><div class="radio-group"><label><input type="radio" name="mcmv_ido" value="sim"> Sim</label><label><input type="radio" name="mcmv_ido" value="nao" checked> Não</label></div></div>
+        <div class="field"><label>Pessoa com deficiência (PCD)?</label><div class="radio-group"><label><input type="radio" name="mcmv_pcd" value="sim"> Sim</label><label><input type="radio" name="mcmv_pcd" value="nao" checked> Não</label></div></div>
+      </div>
+      <div class="field-row single">
+        <div class="field"><label>Se PCD, descreva a necessidade de acessibilidade</label><textarea placeholder="Ex: cadeirante, rampa de acesso, banheiro adaptado..."></textarea></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🏠</span><h2>Programa Mínimo</h2></div>
+    <div class="section-body">
+      <div class="field-row three">
+        <div class="field"><label>Nº de quartos</label><div class="radio-group"><label><input type="radio" name="mcmv_qtos" value="2"> 2</label><label><input type="radio" name="mcmv_qtos" value="3"> 3</label></div></div>
+        <div class="field"><label>Nº de banheiros</label><div class="radio-group"><label><input type="radio" name="mcmv_ban" value="1"> 1</label><label><input type="radio" name="mcmv_ban" value="2"> 2</label></div></div>
+        <div class="field"><label>Garagem?</label><div class="radio-group"><label><input type="radio" name="mcmv_gar" value="1"> 1 vaga</label><label><input type="radio" name="mcmv_gar" value="0"> Não</label></div></div>
+      </div>
+      <div class="field">
+        <label>Itens desejados</label>
+        <div class="check-group">
+          <label><input type="checkbox"> Área de serviço coberta</label>
+          <label><input type="checkbox"> Cozinha integrada com sala</label>
+          <label><input type="checkbox"> Varanda / alpendre</label>
+          <label><input type="checkbox"> Espaço para ampliação futura</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📍</span><h2>Terreno</h2></div>
+    <div class="section-body">
+      <div class="field-row single"><div class="field"><label>Endereço</label><input type="text"></div></div>
+      <div class="field-row three">
+        <div class="field"><label>Frente (m)</label><input type="number"></div>
+        <div class="field"><label>Fundo (m)</label><input type="number"></div>
+        <div class="field"><label>Lateral (m)</label><input type="number"></div>
+      </div>
+      <div class="field-row two">
+        <div class="field"><label>Topografia</label><div class="radio-group"><label><input type="radio" name="mcmv_topo" value="plano"> Plano</label><label><input type="radio" name="mcmv_topo" value="aclive"> Aclive</label><label><input type="radio" name="mcmv_topo" value="declive"> Declive</label></div></div>
+        <div class="field"><label>Restrições / recuos obrigatórios</label><input type="text" placeholder="Prefeitura, condomínio..."></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📝</span><h2>Observações</h2></div>
+    <div class="section-body">
+      <div class="field-row single">
+        <div class="field"><label>Necessidades específicas ou informações adicionais</label><textarea></textarea></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-mcmv -->
+
+
+<!-- ══════════════════════════════════
+     TAB 3 – COMERCIAL
+══════════════════════════════════ -->
+<div id="tab-comercial" class="tab-content">
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📋</span><h2>Identificação do Cliente</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Nome / Razão Social</label><input type="text"></div>
+        <div class="field"><label>Data de preenchimento</label><input type="date"></div>
+      </div>
+      <div class="field-row three">
+        <div class="field"><label>CNPJ / CPF</label><input type="text"></div>
+        <div class="field"><label>Telefone / WhatsApp</label><input type="tel" placeholder="(00) 00000-0000"></div>
+        <div class="field"><label>E-mail</label><input type="email"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🏢</span><h2>Tipo e Uso do Espaço</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Atividade / ramo do negócio</label><input type="text" placeholder="Ex: clínica odontológica, loja de roupas..."></div>
+        <div class="field"><label>Objetivo do projeto</label>
+          <div class="radio-group">
+            <label><input type="radio" name="com_obj" value="construcao"> Construção nova</label>
+            <label><input type="radio" name="com_obj" value="reforma"> Reforma</label>
+            <label><input type="radio" name="com_obj" value="adaptacao"> Adaptação</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row two">
+        <div class="field"><label>Nº de funcionários no local</label><input type="number" placeholder="Ex: 5"></div>
+        <div class="field"><label>Nº estimado de clientes/dia</label><input type="number" placeholder="Ex: 30"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🚪</span><h2>Ambientes Necessários</h2></div>
+    <div class="section-body">
+      <div class="field">
+        <label>Marque os ambientes necessários</label>
+        <div class="check-group">
+          <label><input type="checkbox"> Recepção / Entrada</label>
+          <label><input type="checkbox"> Sala de atendimento / reunião</label>
+          <label><input type="checkbox"> Escritório privativo</label>
+          <label><input type="checkbox"> Estoque / depósito</label>
+          <label><input type="checkbox"> Banheiro clientes</label>
+          <label><input type="checkbox"> Banheiro funcionários</label>
+          <label><input type="checkbox"> Copa / cozinha</label>
+          <label><input type="checkbox"> Área de exposição / showroom</label>
+          <label><input type="checkbox"> Garagem / estacionamento</label>
+          <label><input type="checkbox"> Área externa / calçada</label>
+        </div>
+      </div>
+      <div class="field-row single" style="margin-top:14px">
+        <div class="field"><label>Outros ambientes necessários</label><input type="text" placeholder="Descreva"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">♿</span><h2>Acessibilidade e Normas</h2></div>
+    <div class="section-body">
+      <div class="field-row three">
+        <div class="field"><label>Necessita de acessibilidade (NBR 9050)?</label><div class="radio-group"><label><input type="radio" name="com_acc" value="sim"> Sim</label><label><input type="radio" name="com_acc" value="nao"> Não</label></div></div>
+        <div class="field"><label>Banheiro PCD?</label><div class="radio-group"><label><input type="radio" name="com_ban_pcd" value="sim"> Sim</label><label><input type="radio" name="com_ban_pcd" value="nao"> Não</label></div></div>
+        <div class="field"><label>Precisa de fachada / identidade visual?</label><div class="radio-group"><label><input type="radio" name="com_fach" value="sim"> Sim</label><label><input type="radio" name="com_fach" value="nao"> Não</label></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">⚡</span><h2>Instalações Específicas</h2></div>
+    <div class="section-body">
+      <div class="field">
+        <label>Necessidades especiais de instalação</label>
+        <div class="check-group">
+          <label><input type="checkbox"> Carga elétrica alta (trifásico)</label>
+          <label><input type="checkbox"> Exaustão / ventilação forçada</label>
+          <label><input type="checkbox"> Câmeras / CFTV</label>
+          <label><input type="checkbox"> Ar-condicionado central</label>
+          <label><input type="checkbox"> Equipamentos pesados / industriais</label>
+          <label><input type="checkbox"> Instalação de gás</label>
+        </div>
+      </div>
+      <div class="field-row single" style="margin-top:14px">
+        <div class="field"><label>Detalhes das instalações específicas</label><textarea placeholder="Descreva equipamentos, cargas ou necessidades especiais"></textarea></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📍</span><h2>Terreno / Imóvel</h2></div>
+    <div class="section-body">
+      <div class="field-row single"><div class="field"><label>Endereço</label><input type="text"></div></div>
+      <div class="field-row three">
+        <div class="field"><label>Área total do lote/imóvel (m²)</label><input type="number"></div>
+        <div class="field"><label>Área a construir / reformar (m²)</label><input type="number"></div>
+        <div class="field"><label>Nº de pavimentos</label><input type="number" placeholder="Ex: 1"></div>
+      </div>
+      <div class="field-row two">
+        <div class="field"><label>Orçamento disponível (R$)</label><input type="text" placeholder="Ex: R$ 150.000"></div>
+        <div class="field"><label>Prazo desejado para início</label><select><option value="">Selecione...</option><option>Imediato</option><option>Até 3 meses</option><option>Mais de 3 meses</option></select></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📝</span><h2>Observações</h2></div>
+    <div class="section-body">
+      <div class="field-row single"><div class="field"><label>Necessidades específicas ou informações adicionais</label><textarea></textarea></div></div>
+    </div>
+  </div>
+
+</div><!-- /tab-comercial -->
+
+
+<!-- ══════════════════════════════════
+     TAB 4 – REFORMA
+══════════════════════════════════ -->
+<div id="tab-reforma" class="tab-content">
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📋</span><h2>Identificação do Cliente</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Nome completo</label><input type="text"></div>
+        <div class="field"><label>Data de preenchimento</label><input type="date"></div>
+      </div>
+      <div class="field-row three">
+        <div class="field"><label>Telefone / WhatsApp</label><input type="tel" placeholder="(00) 00000-0000"></div>
+        <div class="field"><label>E-mail</label><input type="email"></div>
+        <div class="field"><label>Endereço do imóvel</label><input type="text"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🔨</span><h2>Tipo de Reforma</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field">
+          <label>Tipo do imóvel</label>
+          <div class="radio-group">
+            <label><input type="radio" name="ref_tipo" value="casa"> Casa</label>
+            <label><input type="radio" name="ref_tipo" value="apto"> Apartamento</label>
+            <label><input type="radio" name="ref_tipo" value="comercial"> Comercial</label>
+            <label><input type="radio" name="ref_tipo" value="outro"> Outro</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Porte da reforma</label>
+          <div class="radio-group">
+            <label><input type="radio" name="ref_porte" value="pequeno"> Pequena (acabamentos)</label>
+            <label><input type="radio" name="ref_porte" value="medio"> Média (ambientes)</label>
+            <label><input type="radio" name="ref_porte" value="grande"> Grande (estrutural)</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row single">
+        <div class="field"><label>O imóvel é: </label>
+          <div class="radio-group">
+            <label><input type="radio" name="ref_uso" value="proprio"> Próprio (já mora)</label>
+            <label><input type="radio" name="ref_uso" value="novo"> Recém adquirido (ainda vazio)</label>
+            <label><input type="radio" name="ref_uso" value="aluguel"> Para locação / venda</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🚪</span><h2>Ambientes a Reformar</h2></div>
+    <div class="section-body">
+      <div class="field">
+        <label>Quais ambientes serão reformados?</label>
+        <div class="check-group">
+          <label><input type="checkbox"> Sala de estar / jantar</label>
+          <label><input type="checkbox"> Cozinha</label>
+          <label><input type="checkbox"> Área de serviço</label>
+          <label><input type="checkbox"> Quarto(s)</label>
+          <label><input type="checkbox"> Suíte / banheiro principal</label>
+          <label><input type="checkbox"> Banheiro social</label>
+          <label><input type="checkbox"> Varanda / área externa</label>
+          <label><input type="checkbox"> Fachada</label>
+          <label><input type="checkbox"> Todo o imóvel</label>
+        </div>
+      </div>
+      <div class="field-row single" style="margin-top:14px">
+        <div class="field"><label>Descreva o que deseja mudar em cada ambiente</label><textarea placeholder="Ex: cozinha – trocar revestimentos e abrir para a sala; banheiro – trocar tudo..."></textarea></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🧱</span><h2>Escopo e Intervenções</h2></div>
+    <div class="section-body">
+      <div class="field">
+        <label>Tipos de intervenção previstos</label>
+        <div class="check-group">
+          <label><input type="checkbox"> Demolição / remoção de paredes</label>
+          <label><input type="checkbox"> Alvenaria / novas paredes</label>
+          <label><input type="checkbox"> Revestimentos (piso e parede)</label>
+          <label><input type="checkbox"> Pintura</label>
+          <label><input type="checkbox"> Elétrica</label>
+          <label><input type="checkbox"> Hidráulica</label>
+          <label><input type="checkbox"> Marcenaria / armários planejados</label>
+          <label><input type="checkbox"> Cobertura / telhado</label>
+          <label><input type="checkbox"> Forro / gesso</label>
+        </div>
+      </div>
+      <div class="field-row two" style="margin-top:14px">
+        <div class="field"><label>Possui projeto existente (planta)?</label><div class="radio-group"><label><input type="radio" name="ref_planta" value="sim"> Sim (enviar)</label><label><input type="radio" name="ref_planta" value="nao"> Não</label></div></div>
+        <div class="field"><label>Necessita de projeto legal / aprovação?</label><div class="radio-group"><label><input type="radio" name="ref_legal" value="sim"> Sim</label><label><input type="radio" name="ref_legal" value="nao"> Não sei</label></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">🎨</span><h2>Estilo e Referências</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field">
+          <label>Estilo desejado</label>
+          <div class="radio-group">
+            <label><input type="radio" name="ref_estilo" value="moderno"> Moderno / contemporâneo</label>
+            <label><input type="radio" name="ref_estilo" value="rustico"> Rústico / industrial</label>
+            <label><input type="radio" name="ref_estilo" value="classico"> Clássico / neoclássico</label>
+            <label><input type="radio" name="ref_estilo" value="minimalista"> Minimalista</label>
+            <label><input type="radio" name="ref_estilo" value="indiferente"> Indiferente</label>
+          </div>
+        </div>
+        <div class="field"><label>Possui referências / imagens de inspiração?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="ref_ref" value="sim"> Sim (enviar por WhatsApp)</label>
+            <label><input type="radio" name="ref_ref" value="nao"> Não</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">💰</span><h2>Orçamento e Prazo</h2></div>
+    <div class="section-body">
+      <div class="field-row two">
+        <div class="field"><label>Orçamento disponível (R$)</label><input type="text" placeholder="Ex: R$ 80.000"></div>
+        <div class="field"><label>Prazo desejado para início</label><select><option value="">Selecione...</option><option>Imediato</option><option>Até 3 meses</option><option>Mais de 3 meses</option></select></div>
+      </div>
+      <div class="field-row single">
+        <div class="field"><label>Prioridade</label>
+          <div class="radio-group">
+            <label><input type="radio" name="ref_prio" value="custo"> Baixo custo</label>
+            <label><input type="radio" name="ref_prio" value="estetica"> Estética</label>
+            <label><input type="radio" name="ref_prio" value="rapidez"> Rapidez</label>
+            <label><input type="radio" name="ref_prio" value="durabilidade"> Durabilidade</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="icon">📝</span><h2>Observações</h2></div>
+    <div class="section-body">
+      <div class="field-row single"><div class="field"><label>Necessidades específicas ou informações adicionais</label><textarea></textarea></div></div>
+    </div>
+  </div>
+
+</div><!-- /tab-reforma -->
+
+</div><!-- /page-wrap -->
+
+<footer>
+  Daphine Ferreira Engenharia Civil &nbsp;·&nbsp; Formulário de Briefing &nbsp;·&nbsp; Uso exclusivo do cliente
+</footer>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function clearForm() {
+  if (!confirm('Limpar todos os campos? Esta ação não pode ser desfeita.')) return;
+  document.querySelectorAll('input[type="text"], input[type="date"], input[type="number"], input[type="email"], input[type="tel"], textarea, select').forEach(el => {
+    if (el.tagName === 'SELECT') el.selectedIndex = 0;
+    else el.value = '';
+  });
+  document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
+}
+
+function copyLink() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    alert('Link copiado! Você pode enviá-lo ao cliente.');
+  }).catch(() => {
+    prompt('Copie o link abaixo:', url);
+  });
+}
+
+// Auto-set today's date on all date fields that are empty
+window.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.querySelectorAll('input[type="date"]').forEach(el => {
+    if (!el.value) el.value = today;
+  });
+});
+</script>
+</body>
+</html>
